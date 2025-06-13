@@ -1,15 +1,23 @@
-import { marked, Renderer } from "marked";
-import { StylesType } from "./types";
-import { initRenderer } from "./utils";
+import { CustomRenderersType } from './types';
+
+import { marked, Renderer } from 'marked';
+import { StylesType } from './types';
+import { initRenderer } from './utils';
 
 export class MarkdownParser {
-  private readonly renderer: Renderer;
+	private readonly renderer: Renderer;
 
-  constructor({ customStyles }: { customStyles?: StylesType }) {
-    this.renderer = initRenderer({ customStyles });
-  }
+	constructor({
+		customStyles,
+		customRenderers,
+	}: {
+		customStyles?: StylesType;
+		customRenderers?: CustomRenderersType;
+	}) {
+		this.renderer = initRenderer({ customStyles, customRenderers });
+	}
 
-  parse(markdown: string) {
-    return marked.parse(markdown, { renderer: this.renderer });
-  }
+	parse(markdown: string) {
+		return marked.parse(markdown, { renderer: this.renderer });
+	}
 }

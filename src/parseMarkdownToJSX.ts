@@ -1,10 +1,11 @@
-import { MarkdownParser } from "./parser";
-import { parseMarkdownToJSXProps } from "./types";
+import { MarkdownParser } from './parser';
+import { parseMarkdownToJSXProps } from './types';
 
 export const parseMarkdownToJSX = ({
-  markdown,
-  customStyles,
+	markdown,
+	customStyles,
+	customRenderers,
 }: parseMarkdownToJSXProps) => {
-  const parser = new MarkdownParser({ customStyles });
-  return parser.parse(markdown);
+	const parser = new MarkdownParser({ customStyles, customRenderers });
+	return parser.parse(markdown);
 };
